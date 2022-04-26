@@ -1,12 +1,14 @@
 import { DynamoDB } from "aws-sdk";
+import { v4 } from "uuid";
 
 const dynamoDb = new DynamoDB.DocumentClient();
 
+const id = v4();
 export function handler() {
   const params = {
     TableName: "test",
     Item: {
-      id: "test",
+      id,
       name: "test",
       age: "test",
       email: "test",

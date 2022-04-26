@@ -9,7 +9,13 @@ export default [
       file: "dist/handler.js",
       format: "cjs",
     },
-    plugins: [nodeResolve(), commonjs(), json()],
+    plugins: [
+      nodeResolve({
+        resolveOnly: (module) => !module.includes("aws-sdk"),
+      }),
+      commonjs(),
+      json(),
+    ],
   },
   {
     input: "src/handler1.js",

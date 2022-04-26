@@ -3,14 +3,16 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var awsSdk = require('aws-sdk');
+var uuid = require('uuid');
 
 const dynamoDb = new awsSdk.DynamoDB.DocumentClient();
 
+const id = uuid.v4();
 function handler() {
   const params = {
     TableName: "test",
     Item: {
-      id: "test",
+      id,
       name: "test",
       age: "test",
       email: "test",
